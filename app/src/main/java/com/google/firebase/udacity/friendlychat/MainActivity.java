@@ -274,14 +274,12 @@ public class MainActivity extends AppCompatActivity {
                 Uri selectedimage = data.getData();
 
             Log.e(TAG , "successful");
-            Toast.makeText(MainActivity.this, "dfghjk;", Toast.LENGTH_SHORT).show();
                 StorageReference ref = storageref.child(selectedimage.getLastPathSegment());
                 ref.putFile(selectedimage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
                         Log.e(TAG , "successful");
-                        Toast.makeText(MainActivity.this, "dfghjk;", Toast.LENGTH_SHORT).show();
                         Uri downloadurl = taskSnapshot.getDownloadUrl();
                         FriendlyMessage friendlyMessage = new FriendlyMessage(null, mUsername, downloadurl.toString());
                         mMessageDatabaseReference.push().setValue(friendlyMessage);
